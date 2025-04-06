@@ -1,4 +1,4 @@
-package com.controleonline.pos.infinitepay.payment;
+package com.controleonline.manager.infinitepay.payment;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import java.nio.charset.StandardCharsets;
 
 public class InfinitePay extends ReactContextBaseJavaModule {
-    private static final String CALLBACK = "ControleOnline://POS";
+    private static final String CALLBACK = "ControleOnline://MANAGER";
     private static final String SCHEME = "infinitepaydash";
     private static final String PAYMENT = "infinitetap-app";
 

@@ -1,4 +1,4 @@
-package com.controleonline.pos;
+package com.controleonline.manager;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
@@ -9,8 +9,8 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
-import com.controleonline.pos.cielo.payment.CieloPackage;
-import com.controleonline.pos.infinitepay.payment.InfinitePayPackage;
+import com.controleonline.manager.cielo.payment.CieloPackage;
+import com.controleonline.manager.infinitepay.payment.InfinitePayPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
