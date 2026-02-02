@@ -1,7 +1,9 @@
 # OSX
 #
 .DS_Store
-
+.thumbs.db
+*.log
+*.sh
 # Xcode
 #
 build/

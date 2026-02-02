@@ -1,4 +1,54 @@
 {
-  "name": "MANAGER",
-  "displayName": "Gestor Controle Online"
+  "expo": {
+    "name": "MANAGER",
+    "displayName": "MANAGER Controle Online",
+    "slug": "manager-controle-online",
+    "version": "1.0.152",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "jsEngine": "jsc",
+    "icon": "./src/assets/icon.png",
+    "splash": {
+      "image": "./src/assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "jsEngine": "jsc",
+      "bundleIdentifier": "com.controleonline.manager",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Necessário para processamento de áudio no PDV.",
+        "NSAppleMusicUsageDescription": "Necessário para emitir alertas sonoros de venda."
+      }
+    },
+    "android": {
+      "jsEngine": "jsc",
+      "package": "com.controleonline.manager",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "VIBRATE",
+        "RECORD_AUDIO",
+        "INTERNET"
+      ]
+    },
+    "web": {
+      "favicon": "./src/assets/favicon.png"
+    },
+    "plugins": [
+      "expo-build-properties",
+      "expo-asset",
+      "expo-font",
+      "expo-audio",
+      "expo-video"
+    ]
+  }
 }

@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Gestor Controle Online</string>
-    <string name="schema_return">ControleOnline</string>
+  <string name="app_name">MANAGER</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
 </resources>
