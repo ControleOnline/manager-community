@@ -1,9 +1,8 @@
 {
   "expo": {
-    "name": "MANAGER",
-    "displayName": "MANAGER Controle Online",
+    "name": "On Gestor",
+    "displayName": "Gestor Controle Online",
     "slug": "manager-controle-online",
-    "version": "1.0.152",
     "platforms": [
       "android",
       "ios",
