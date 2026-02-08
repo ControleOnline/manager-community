@@ -2,7 +2,7 @@
 #
 .DS_Store
 .thumbs.db
-*.log
+.kotlin/
 *.sh
 # Xcode
 #
@@ -23,12 +23,13 @@ DerivedData
 *.ipa
 *.xcuserstate
 ios/.xcode.env.local
+android/
+ios/
 
 # Android/IntelliJ
 #
 build/
 .idea
-.gradle
 local.properties
 *.iml
 *.hprof
@@ -72,3 +73,6 @@ package-lock.json
 .expo
 .expo/*
 *.lock
+*.bak
+config/env.local.js
+*.bak
