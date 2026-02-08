@@ -4,7 +4,11 @@
     "displayName": "MANAGER Controle Online",
     "slug": "manager-controle-online",
     "version": "1.0.152",
-    "platforms": ["android", "ios", "web"],
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
     "jsEngine": "hermes",
     "icon": "./src/assets/logo.png",
     "splash": {
@@ -30,11 +34,19 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "permissions": ["VIBRATE", "INTERNET"]
+      "permissions": [
+        "VIBRATE",
+        "INTERNET"
+      ]
     },
     "web": {
       "favicon": "./src/assets/logo.png"
     },
-    "plugins": ["expo-build-properties", "expo-asset", "expo-font"]
+    "plugins": [
+      "expo-build-properties",
+      "expo-asset",
+      "expo-font",
+      "react-native-iap"
+    ]
   }
 }
