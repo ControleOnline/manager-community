@@ -4,51 +4,37 @@
     "displayName": "MANAGER Controle Online",
     "slug": "manager-controle-online",
     "version": "1.0.152",
-    "platforms": [
-      "android",
-      "ios",
-      "web"
-    ],
-    "jsEngine": "jsc",
-    "icon": "./src/assets/icon.png",
+    "platforms": ["android", "ios", "web"],
+    "jsEngine": "hermes",
+    "icon": "./src/assets/logo.png",
     "splash": {
-      "image": "./src/assets/splash-icon.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true,
-      "jsEngine": "jsc",
-      "bundleIdentifier": "com.controleonline.manager",
+      "jsEngine": "hermes",
+      "bundleIdentifier": "com.controleonline.ppc",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "Necessário para processamento de áudio no PDV.",
         "NSAppleMusicUsageDescription": "Necessário para emitir alertas sonoros de venda."
       }
     },
     "android": {
-      "jsEngine": "jsc",
-      "package": "com.controleonline.manager",
+      "jsEngine": "hermes",
+      "package": "com.controleonline.ppc",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/logo.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "permissions": [
-        "VIBRATE",
-        "RECORD_AUDIO",
-        "INTERNET"
-      ]
+      "permissions": ["VIBRATE", "INTERNET"]
     },
     "web": {
-      "favicon": "./src/assets/favicon.png"
+      "favicon": "./src/assets/logo.png"
     },
-    "plugins": [
-      "expo-build-properties",
-      "expo-asset",
-      "expo-font",
-      "expo-audio",
-      "expo-video"
-    ]
+    "plugins": ["expo-build-properties", "expo-asset", "expo-font"]
   }
 }
