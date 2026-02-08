@@ -7,10 +7,23 @@
 </a>
 
 
-### Submodules
+### Install
 ```bash
 git submodule update --init --recursive
 git submodule update --recursive
+npm install
+npx expo prebuild -p android --clean
+```
+
+### Run Android
+```bash
+npx expo run:android
+```
+
+### Build Android
+```bash
+cd android
+./gradlew bundleRelease --init-script ../signing.gradle
 ```
 
 
