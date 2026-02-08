@@ -34,3 +34,9 @@
 [submodule "modules/controleonline/ui-manager"]
 	path = modules/controleonline/ui-manager
 	url = https://github.com/ControleOnline/ui-manager.git
+[submodule "modules/controleonline/ui-customers"]
+	path = modules/controleonline/ui-customers
+	url = https://github.com/ControleOnline/ui-customers.git
+[submodule "modules/controleonline/ui-ppc"]
+	path = modules/controleonline/ui-ppc
+	url = https://github.com/ControleOnline/ui-ppc.git
