@@ -18,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "jsEngine": "hermes",
-      "bundleIdentifier": "com.controleonline.ppc",
+      "bundleIdentifier": "com.controleonline.manager",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "Necessário para processamento de áudio no PDV.",
         "NSAppleMusicUsageDescription": "Necessário para emitir alertas sonoros de venda."
@@ -26,7 +26,7 @@
     },
     "android": {
       "jsEngine": "hermes",
-      "package": "com.controleonline.ppc",
+      "package": "com.controleonline.manager",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/logo.png",
