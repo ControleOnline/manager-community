@@ -1,8 +1,8 @@
 # MANAGER Controle Online
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/controleonline/manager-community/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/controleonline/manager-platform-community/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/controleonline/app-community/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/controleonline/manager-platform-community/?branch=master)
 
-<a href="https://github.com/ControleOnline/manager-community" target="_blank">
+<a href="https://github.com/ControleOnline/app-community" target="_blank">
   <img src="https://www.cielo.com.br/assets_cielo/cielo_store/features/mobile/cielo-lio.png" />
 </a>
 
@@ -44,8 +44,8 @@ cd android
 
 ### Top contributors
 
-<a href="https://github.com/ControleOnline/manager-community/graphs/contributors" target="_blank">
-  <img src="https://contrib.rocks/image?repo=ControleOnline/manager-community" />
+<a href="https://github.com/ControleOnline/app-community/graphs/contributors" target="_blank">
+  <img src="https://contrib.rocks/image?repo=ControleOnline/app-community" />
 </a>
 
 
