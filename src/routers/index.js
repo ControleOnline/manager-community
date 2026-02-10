@@ -47,7 +47,7 @@ if (env.APP_TYPE == 'MANAGER') {
   })
 }
 
-if (env.APP_TYPE == 'SHOP') {
+if (env.APP_TYPE == 'MENU') {
   allRoutes.push({
     name: 'HomePage',
     component: ShopHomePage,
