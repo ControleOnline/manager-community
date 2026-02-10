@@ -1,4 +1,4 @@
-# MANAGER Controle Online
+# App Controle Online
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/controleonline/app-community/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/controleonline/manager-platform-community/?branch=master)
 
