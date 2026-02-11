@@ -64,7 +64,9 @@ jobs:
         run: npx expo prebuild --clean
 
       - name: Build Android Bundle
-        run: ./gradlew bundleRelease
+        run: |
+            cd android
+            ./gradlew bundleRelease
 
       - name: Set Dynamic Package Name
         run: |
