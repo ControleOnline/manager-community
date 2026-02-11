@@ -63,10 +63,19 @@ jobs:
       - name: Prebuild
         run: npx expo prebuild --clean
 
+      - name: Create Android Signing Files
+        run: |
+          mkdir -p ./config/android
+          echo "${{ secrets.CERT }}" | base64 -d > ./config/android/controle-online.keystore
+          echo "MYAPP_UPLOAD_STORE_FILE=./config/android/controle-online.keystore" > ./config/android/env.properties
+          echo "MYAPP_UPLOAD_KEY_ALIAS=controle-online" >> ./config/android/env.properties
+          echo "MYAPP_UPLOAD_STORE_PASSWORD=${{ secrets.PASS }}" >> ./config/android/env.properties
+          echo "MYAPP_UPLOAD_KEY_PASSWORD=${{ secrets.PASS }}" >> ./config/android/env.properties
+
       - name: Build Android Bundle
         run: |
-            cd android
-            ./gradlew bundleRelease
+          cd android
+          ./gradlew bundleRelease --init-script ../signing.gradle
 
       - name: Set Dynamic Package Name
         run: |

@@ -65,12 +65,12 @@ jobs:
 
       - name: Create Android Signing Files
         run: |
-          mkdir -p app-community/config/android
-          echo "${{ secrets.CERT }}" | base64 -d > app-community/config/android/controle-online.keystore
-          echo "MYAPP_UPLOAD_STORE_FILE=./config/android/controle-online.keystore" > app-community/config/android/env.properties
-          echo "MYAPP_UPLOAD_KEY_ALIAS=controle-online" >> app-community/config/android/env.properties
-          echo "MYAPP_UPLOAD_STORE_PASSWORD=${{ secrets.PASS }}" >> app-community/config/android/env.properties
-          echo "MYAPP_UPLOAD_KEY_PASSWORD=${{ secrets.PASS }}" >> app-community/config/android/env.properties
+          mkdir -p ./config/android
+          echo "${{ secrets.CERT }}" | base64 -d > ./config/android/controle-online.keystore
+          echo "MYAPP_UPLOAD_STORE_FILE=./config/android/controle-online.keystore" > ./config/android/env.properties
+          echo "MYAPP_UPLOAD_KEY_ALIAS=controle-online" >> ./config/android/env.properties
+          echo "MYAPP_UPLOAD_STORE_PASSWORD=${{ secrets.PASS }}" >> ./config/android/env.properties
+          echo "MYAPP_UPLOAD_KEY_PASSWORD=${{ secrets.PASS }}" >> ./config/android/env.properties
 
       - name: Build Android Bundle
         run: |
