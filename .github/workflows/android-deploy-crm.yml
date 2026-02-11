@@ -63,6 +63,14 @@ jobs:
       - name: Prebuild
         run: npx expo prebuild --clean
 
+      - name: Setup Keystore
+        run: |
+            echo ${{ secrets.CONTROLEONLINE }} > config/android/controle-online.keystore
+
+      - name: Setup Android Environment Properties
+        run: |
+          echo "${{ secrets.ANDROID_ENV_PROPERTIES }}" > config/android/env.properties
+
       - name: Build Android Bundle
         run: |
             cd android
