@@ -31,7 +31,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
-          cache: "yarn"
 
       - name: Generate Dynamic Configs
         run: |
@@ -57,6 +56,9 @@ jobs:
         run: node scripts/configure-assets.js
         env:
           APP_TYPE: ${{ env.APP_TYPE }}
+
+      - name: Install Dependencies
+        run: npm install
 
       - name: Prebuild
         run: npx expo prebuild --clean
