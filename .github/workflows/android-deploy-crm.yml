@@ -1,4 +1,4 @@
-name: Deploy Project
+name: Deploy CRM Android
 
 on:
   push:
@@ -35,12 +35,10 @@ jobs:
 
       - name: Generate Dynamic Configs
         run: |
-          APP_LOWER=$(echo "$APP_TYPE" | tr '[:upper:]' '[:lower:]')
-
           echo "const env = {\
           API_ENTRYPOINT: '://api.controleonline.com',\
           DOMAIN: '://app.controleonline.com',\
-          APP_TYPE: '$APP_TYPE',\
+          APP_TYPE: '${{ env.APP_TYPE }}',\
           ZOOM: 0.80,\
           OAUTH_GOOGLE_CLIENT_ID:'${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}',\
           GMAPS_GOOGLE_CLIENT_ID:'${{ secrets.GMAPS_GOOGLE_CLIENT_ID }}',\
@@ -55,63 +53,25 @@ jobs:
           };\
           module.exports = { env };" > ./config/env.local.js
 
-          echo "{
-            \"expo\": {
-              \"name\": \"On $APP_TYPE\",
-              \"displayName\": \"$APP_TYPE Controle Online\",
-              \"slug\": \"${APP_LOWER}-controle-online\",
-              \"platforms\": [\"android\",\"ios\",\"web\"],
-              \"jsEngine\": \"hermes\",
-              \"icon\": \"./src/assets/${APP_LOWER}.png\",
-              \"splash\": {
-                \"image\": \"./src/assets/${APP_LOWER}-splash.png\",
-                \"resizeMode\": \"contain\",
-                \"backgroundColor\": \"#ffffff\"
-              },
-              \"ios\": {
-                \"supportsTablet\": true,
-                \"jsEngine\": \"hermes\",
-                \"bundleIdentifier\": \"com.controleonline.${APP_LOWER}\",
-                \"infoPlist\": {
-                  \"NSMicrophoneUsageDescription\": \"Necessário para processamento de áudio no PDV.\",
-                  \"NSAppleMusicUsageDescription\": \"Necessário para emitir alertas sonoros de venda.\"
-                }
-              },
-              \"android\": {
-                \"jsEngine\": \"hermes\",
-                \"package\": \"com.controleonline.${APP_LOWER}\",
-                \"versionCode\": 1,
-                \"adaptiveIcon\": {
-                  \"foregroundImage\": \"./src/assets/${APP_LOWER}.png\",
-                  \"backgroundColor\": \"#ffffff\"
-                },
-                \"edgeToEdgeEnabled\": true,
-                \"permissions\": [\"VIBRATE\",\"INTERNET\"]
-              },
-              \"web\": {
-                \"favicon\": \"./src/assets/${APP_LOWER}.png\"
-              },
-              \"plugins\": [
-                \"expo-build-properties\",
-                \"expo-asset\",
-                \"expo-font\",
-                \"react-native-iap\"
-              ]
-            }
-          }" > app.json
+      - name: Configure Assets by APP_TYPE
+        run: node scripts/configure-assets.js
+        env:
+          APP_TYPE: ${{ env.APP_TYPE }}
 
       - name: Install Modules
         run: |
           npm install --global yarn
           yarn
-          npm install --global cordova
 
-      - name: Build Android
-        run: npx quasar build -m android
+      - name: Prebuild
+        run: npx expo prebuild --clean
+
+      - name: Build Android Bundle
+        run: ./gradlew bundleRelease
 
       - name: Set Dynamic Package Name
         run: |
-          APP_LOWER=$(echo "$APP_TYPE" | tr '[:upper:]' '[:lower:]')
+          APP_LOWER=$(echo "${{ env.APP_TYPE }}" | tr '[:upper:]' '[:lower:]')
           echo "PACKAGE_NAME=com.controleonline.${APP_LOWER}" >> $GITHUB_ENV
 
       - name: Upload .aab to Production Track
