@@ -1,4 +1,4 @@
-name: Deploy CRM Android
+name: Deploy MENU Android
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      APP_TYPE: CRM
+      APP_TYPE: MENU
 
     steps:
       - uses: actions/checkout@v3
@@ -83,10 +83,10 @@ jobs:
           echo "PACKAGE_NAME=com.controleonline.${APP_LOWER}" >> $GITHUB_ENV
 
       - name: Upload .aab to Production Track
-        uses: r0adkll/upload-google-play@v1
+        uses: KevinRohn/github-action-upload-play-store@v1.0.0
         with:
-          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
-          packageName: ${{ env.PACKAGE_NAME }}
-          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          service_account_json: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
+          package_name: ${{ env.PACKAGE_NAME }}
+          aab_file_path: android/app/build/outputs/bundle/release/app-release.aab
           track: production
-          status: completed
+          release_status: completed
