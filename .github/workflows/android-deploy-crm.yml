@@ -58,11 +58,6 @@ jobs:
         env:
           APP_TYPE: ${{ env.APP_TYPE }}
 
-      - name: Install Modules
-        run: |
-          npm install --global yarn
-          yarn
-
       - name: Prebuild
         run: npx expo prebuild --clean
 
