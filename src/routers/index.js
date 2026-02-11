@@ -14,6 +14,7 @@ import ordersRoutes from '@controleonline/ui-orders/src/react/router/routes'
 import peopleRoutes from '@controleonline/ui-people/src/react/router/routes'
 import crmRoutes from '@controleonline/ui-crm/src/react/router/routes'
 import contracts from '@controleonline/ui-contracts/src/react/router/routes'
+import products from '@controleonline/ui-products/src/react/router/routes'
 
 import { env } from '@env'
 
@@ -28,6 +29,7 @@ export const allRoutes = [
   ...ordersRoutes,
   ...crmRoutes,
   ...contracts,
+  ...products
 ]
 
 const homeByType = {
