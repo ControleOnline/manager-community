@@ -1,4 +1,4 @@
-name: Deploy CRM Android
+name: Deploy CHECKOUT Android
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      APP_TYPE: CRM
+      APP_TYPE: CHECKOUT
 
     steps:
       - uses: actions/checkout@v3
@@ -66,7 +66,7 @@ jobs:
       - name: Build Android Bundle
         run: |
             cd android
-            ./gradlew bundleRelease --init-script ../signing.gradle
+            ./gradlew bundleRelease
 
       - name: Set Dynamic Package Name
         run: |
