@@ -20,8 +20,8 @@
       "jsEngine": "hermes",
       "bundleIdentifier": "com.controleonline.manager",
       "infoPlist": {
-        "NSMicrophoneUsageDescription": "Necessário para processamento de áudio no PDV.",
-        "NSAppleMusicUsageDescription": "Necessário para emitir alertas sonoros de venda."
+        "NSMicrophoneUsageDescription": "Necessário para processamento de áudio.",
+        "NSAppleMusicUsageDescription": "Necessário para emitir alertas sonoros."
       }
     },
     "android": {
