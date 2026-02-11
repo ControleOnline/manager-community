@@ -1,0 +1,64 @@
+name: Deploy Project
+on:
+  push:
+    branches: [android]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gradle/actions/setup-gradle@v3
+      - uses: amyu/setup-android@v4
+        with:
+          sdk-version: |
+            33
+            34
+          build-tools-version: 33.0.2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - name: Creating Config
+        run: |
+          echo "const env = {\
+          API_ENTRYPOINT: '://api.controleonline.com',\
+          DOMAIN: '://app.controleonline.com',\
+          APP_TYPE: 'CRM',\
+          ZOOM: 0.80,\
+          OAUTH_GOOGLE_CLIENT_ID:'${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}',\
+          GMAPS_GOOGLE_CLIENT_ID:'${{ secrets.GMAPS_GOOGLE_CLIENT_ID }}',\
+          NEW_RELIC:{\
+            LICENSE_KEY:'${{ secrets.NEW_RELIC_LICENSE_KEY }}',\
+            APPLICATION_ID:'${{ secrets.NEW_RELIC_APPLICATION_ID }}',\
+            ACCOUNT_ID: '${{ secrets.NEW_RELIC_ACCOUNT_ID }}',\
+            TRUST_KEY: '${{ secrets.NEW_RELIC_TRUST_KEY }}',\
+            BEACON: '${{ secrets.NEW_RELIC_BEACON }}',\
+            ERROR_BEACON: '${{ secrets.NEW_RELIC_ERROR_BEACON }}'\
+          }\
+          };\
+          module.exports = { env };\
+          " > ./config/env.local.js
+      - name: Configure Assets by APP_TYPE
+        run: node scripts/configure-assets.js
+        env:
+          APP_TYPE: CRM
+      - name: Update Submodules
+        run: |
+          git submodule update --recursive --init
+          git submodule update --recursive --remote
+      - name: Install Modules
+        run: |
+          npm install --global yarn
+          yarn
+          npm install --global cordova
+      - name: Build
+        run: |
+          npx quasar build -m android
+      - name: Upload .aab to Production Track
+        id: upload_production
+        uses: KevinRohn/github-action-upload-play-store@v1.0.0
+        with:
+          service_account_json: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
+          package_name: "com.controleonline.app"
+          aab_file_path: "/home/runner/work/controle-online/controle-online/dist/cordova/android/bundle/release/app-release.aab"
+          track: "production"
+          release_status: "completed"
