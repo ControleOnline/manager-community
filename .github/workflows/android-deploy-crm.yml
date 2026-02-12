@@ -10,7 +10,8 @@ jobs:
 
     env:
       APP_TYPE: CRM
-
+      APP_DISPLAY_NAME: "CRM"
+      
     steps:
       - uses: actions/checkout@v3
 
@@ -57,8 +58,10 @@ jobs:
       - name: Update app.json dynamically
         run: |
             APP_LOWER=$(echo "${{ env.APP_TYPE }}" | tr '[:upper:]' '[:lower:]')
+            sed -i "s/On Gestor/On ${{ env.APP_DISPLAY_NAME }}/g" app.json
+            sed -i "s/Gestor Controle Online/${{ env.APP_DISPLAY_NAME }} Controle Online/g" app.json
             sed -i "s/manager/${APP_LOWER}/g" app.json
-    
+            
       - name: Configure Assets by APP_TYPE
         run: node scripts/configure-assets.js
         env:
