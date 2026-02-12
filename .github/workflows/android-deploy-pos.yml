@@ -1,4 +1,4 @@
-name: Deploy PPC Android
+name: Deploy POS Android
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      APP_TYPE: PPC
+      APP_TYPE: POS
 
     steps:
       - uses: actions/checkout@v3
@@ -88,5 +88,5 @@ jobs:
           service_account_json: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
           package_name: ${{ env.PACKAGE_NAME }}
           aab_file_path: android/app/build/outputs/bundle/release/app-release.aab
-          track: production
-          release_status: completed
+          track: internal
+          release_status: draft
