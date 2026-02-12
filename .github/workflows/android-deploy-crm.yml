@@ -54,22 +54,11 @@ jobs:
           };\
           module.exports = { env };" > ./config/env.local.js
 
-          echo "{
-            \"expo\": {
-              \"name\": \"On ${APP_LOWER}\",
-              \"displayName\": \"${APP_LOWER} Controle Online\",
-              \"slug\": \"${APP_LOWER}-controle-online\",
-              \"platforms\": [\"android\",\"ios\",\"web\"],
-              \"jsEngine\": \"hermes\",
-              \"icon\": \"./src/assets/${APP_LOWER}.png\",
-              \"android\": {
-                \"jsEngine\": \"hermes\",
-                \"package\": \"com.controleonline.${APP_LOWER}\",
-                \"versionCode\": 1
-              }
-            }
-          }" > app.json
-
+      - name: Update app.json dynamically
+        run: |
+            APP_LOWER=$(echo "${{ env.APP_TYPE }}" | tr '[:upper:]' '[:lower:]')
+            sed -i "s/manager/${APP_LOWER}/g" app.json
+    
       - name: Configure Assets by APP_TYPE
         run: node scripts/configure-assets.js
         env:
