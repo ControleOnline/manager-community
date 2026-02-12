@@ -23,8 +23,7 @@ jobs:
 
       - uses: amyu/setup-android@v4
         with:
-          sdk-version: |
-            36
+          sdk-version: 36
           build-tools-version: 36.0.0
           ndk-version: 27.1.12297006
 
@@ -32,8 +31,11 @@ jobs:
         with:
           node-version: "20"
 
+      # ✅ Geração dinâmica correta
       - name: Generate Dynamic Configs
         run: |
+          APP_LOWER=$(echo "${{ env.APP_TYPE }}" | tr '[:upper:]' '[:lower:]')
+
           echo "const env = {\
           API_ENTRYPOINT: '://api.controleonline.com',\
           DOMAIN: '://app.controleonline.com',\
@@ -51,6 +53,22 @@ jobs:
           }\
           };\
           module.exports = { env };" > ./config/env.local.js
+
+          echo "{
+            \"expo\": {
+              \"name\": \"On ${APP_LOWER}\",
+              \"displayName\": \"${APP_LOWER} Controle Online\",
+              \"slug\": \"${APP_LOWER}-controle-online\",
+              \"platforms\": [\"android\",\"ios\",\"web\"],
+              \"jsEngine\": \"hermes\",
+              \"icon\": \"./src/assets/${APP_LOWER}.png\",
+              \"android\": {
+                \"jsEngine\": \"hermes\",
+                \"package\": \"com.controleonline.${APP_LOWER}\",
+                \"versionCode\": 1
+              }
+            }
+          }" > app.json
 
       - name: Configure Assets by APP_TYPE
         run: node scripts/configure-assets.js
@@ -83,10 +101,10 @@ jobs:
           echo "PACKAGE_NAME=com.controleonline.${APP_LOWER}" >> $GITHUB_ENV
 
       - name: Upload .aab to Production Track
-        uses: r0adkll/upload-google-play@v1
+        uses: KevinRohn/github-action-upload-play-store@v1.0.0
         with:
-          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
-          packageName: ${{ env.PACKAGE_NAME }}
-          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          service_account_json: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
+          package_name: ${{ env.PACKAGE_NAME }}
+          aab_file_path: android/app/build/outputs/bundle/release/app-release.aab
           track: production
-          status: completed
+          release_status: completed
