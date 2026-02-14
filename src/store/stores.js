@@ -25,15 +25,22 @@ import displays from '@controleonline/ui-ppc/src/store/modules/displays';
 import queues from '@controleonline/ui-ppc/src/store/modules/queues';
 import address from '@controleonline/ui-people/src/store/address';
 import documents from '@controleonline/ui-people/src/store/documents';
+import documentsTypes from '@controleonline/ui-people/src/store/documents/documentsTypes';
 import phones from '@controleonline/ui-people/src/store/phones';
 import emails from '@controleonline/ui-people/src/store/emails';
 import people from '@controleonline/ui-people/src/store/people';
+import users from '@controleonline/ui-users/src/store/users';
 import invoice from '@controleonline/ui-financial/src/store/invoice';
 import paymentType from '@controleonline/ui-financial/src/store/paymentType';
 import wallet from '@controleonline/ui-financial/src/store/wallet';
 import walletPaymentType from '@controleonline/ui-financial/src/store/walletPaymentType';
 import order_products_queue from '@controleonline/ui-ppc/src/store/modules/order_products_queue';
 import display_queues from '@controleonline/ui-ppc/src/store/modules/display_queues';
+import contract from '@controleonline/ui-contracts/src/store/contract';
+import contract_peoples from '@controleonline/ui-contracts/src/store/contract/contract_people';
+import models from '@controleonline/ui-crm/src/store/model';
+import tasks from '@controleonline/ui-tasks/src/store/tasks';
+import tasksInterations from '@controleonline/ui-tasks/src/store/task_interations';
 
 
 export default {
@@ -66,11 +73,18 @@ export default {
   printer,
   address,
   documents,
+  documentsTypes,
   phones,
   emails,
   people,
+  users,
   invoice,
   paymentType,
   wallet,
   walletPaymentType,
+  contract,
+  contract_peoples,
+  models,
+  tasks,
+  tasksInterations,
 };
