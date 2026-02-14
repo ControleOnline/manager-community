@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import CRMHomePage from '@controleonline/ui-crm/src/react/pages/home/index'
 import ManagerHomePage from '@controleonline/ui-manager/src/react/pages/home/index'
+import POSHomePage from '@controleonline/ui-shop/src/react/pages/home/index'
 import PPCHomePage from '@controleonline/ui-ppc/src/react/pages/displays/displayPage'
 import ShopHomePage from '@controleonline/ui-shop/src/react/pages/home/index'
 
@@ -37,6 +38,7 @@ const homeByType = {
   CRM: CRMHomePage,
   MANAGER: ManagerHomePage,
   MENU: ShopHomePage,
+  POS: POSHomePage,
   PPC: PPCHomePage,
 }
 
