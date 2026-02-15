@@ -59,7 +59,6 @@ jobs:
         run: |
             APP_LOWER=$(echo "${{ env.APP_TYPE }}" | tr '[:upper:]' '[:lower:]')
             sed -i "s/On Gestor/On ${{ env.APP_DISPLAY_NAME }}/g" app.json
-            sed -i "s/Gestor Controle Online/${{ env.APP_DISPLAY_NAME }} Controle Online/g" app.json
             sed -i "s/manager/${APP_LOWER}/g" app.json
             
       - name: Configure Assets by APP_TYPE
